@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author Administrator
  *
  */
-public class FindInPartiallySortedMatrix {
+public class FindInPartiallySortedMatrixTest {
 
 
 	/**
@@ -25,16 +25,22 @@ public class FindInPartiallySortedMatrix {
 		boolean found = false;
 
 		if (matrix != null && rows > 0 && columns > 0) {
-			int row = 0;//从0行开始
-			int column = columns - 1;//右上角
+			//从0行开始
+			int row = 0;
+			//右上角
+			int column = columns - 1;
 			while (row < rows && column >= 0) {
 				if (matrix[row][column] == number) {
 					found = true;
 					break;
-				} else if (matrix[row][column] > number)//小于右上角的删除一列
+				} else if (matrix[row][column] > number){
+					//小于右上角的删除一列
 					--column;
-				else
-					++row;//大于右上角删除一行
+				}else{
+					//大于右上角删除一行
+					++row;
+				}
+					
 			}
 		}
 
@@ -43,14 +49,18 @@ public class FindInPartiallySortedMatrix {
 	}
 
 	public void test(String testName, int matrix[][], int rows, int columns, int number, boolean expected){
-		if(testName != null)
-	        System.out.println("begins: "+testName);
+		if(testName != null){
+			System.out.println("begins: "+testName);
+		}
+	        
 
 	    boolean result = find(matrix, rows, columns, number);
-	    if(result == expected)
+	    if(result == expected){
 	    	System.out.println("Passed");
-	    else
+	    }else{
 	    	System.out.println("Failed");
+	    }
+	    	
 	}
 	@Test
 	public void test1()
